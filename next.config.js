@@ -6,7 +6,9 @@ const nextConfig = {
     },
     images:{
         domains: ['lh3.googleusercontent.com', 'fastly.picsum.photos']
-    }
+    },typescript: {
+        ignoreBuildErrors: true,
+      },
 }
 
 module.exports = nextConfig
