@@ -14,7 +14,7 @@ export default async function Page({params,searchParams}: {params: { post_id: st
 
     let post = await getPostDetail(post_id)
     // let comments = await getComments(post_id)
-    let post_date = new Date(post.post_date).toLocaleDateString()
+    // let post_date = new Date(post.post_date).toLocaleDateString()
 
     
     return(
