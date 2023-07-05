@@ -29,7 +29,7 @@ export default async function Page({params,searchParams}: {params: { post_id: st
             </div>
             <div className='dark:bg-[#272729] w-[100%] border-b-2 border-gray-200 space-y-2 flex flex-col p-2 bg-white rounded-r-md'>
                 <div className='text-sm flex space-x-5'>
-                    <h1>Posted by u/{name}</h1><h1>   {params.post_date}</h1>
+                    <h1>Posted by u/{name}</h1><h1>   {}</h1>
                 </div>
                 <div className='text-xl'>
                     <h1>{post.post_title}</h1>
