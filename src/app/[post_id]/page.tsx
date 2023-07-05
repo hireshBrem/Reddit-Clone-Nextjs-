@@ -59,8 +59,8 @@ export default async function Page({params,searchParams}: {params: { post_id: st
                 :null
             }                
                 <CommentBox post_id={post_id} />
-            </div>
-            </div>
+            {/* </div>
+            </div> */}
         </div>
     </div>
     <Sidebar />
