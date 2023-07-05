@@ -48,6 +48,7 @@ export default async function Home() {
                                 pathname: `/${post.post_title}`,
                                 query: {
                                     post_id: post.post_id,
+                                    post_date: post_date,
                                     name: post_name,
                                 }}}
                             target='_blank' className='w-[100%]'>
