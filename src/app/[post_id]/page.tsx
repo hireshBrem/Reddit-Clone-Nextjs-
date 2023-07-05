@@ -1,9 +1,5 @@
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { getComments, changeVotes, getUserDetail, getPostDetail } from "../server_actions/actions";
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Comment from "../components/CommentBox";
-import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../components/Sidebar";
 import VoteButton from "../components/VoteButton";
 import { getServerSession } from "next-auth";
@@ -14,6 +10,7 @@ export default async function Page({params,searchParams}: {params: { post_id: st
     const session = await getServerSession(authOptions)
     let name = searchParams.name
     let post_id = searchParams.post_id
+    console.log(name + " " + post_id)
 
     let post = await getPostDetail(post_id)
     let comments = await getComments(post_id)
