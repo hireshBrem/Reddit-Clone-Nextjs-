@@ -22,14 +22,14 @@ export default async function Page({params,searchParams}: {params: { post_id: st
     <div className='max-w-5xl m-auto flex flex-row justify-center pt-5'>
     <div className='m-2 flex-1 flex flex-col'>
         <div className='flex flex-row w-full'>
-            {/* <div className='dark:bg-[#272729] border-r-2 dark:border-black  flex flex-col align-middle w-10 bg-[#F6F7F8] rounded-l-md'>               
+            <div className='dark:bg-[#272729] border-r-2 dark:border-black  flex flex-col align-middle w-10 bg-[#F6F7F8] rounded-l-md'>               
                 <VoteButton post_id={post_id} votes={post.post_votes} changeVotes={changeVotes} vote="up" />
                 <h1 className='mx-4'>{post.post_votes}</h1>
                 <VoteButton post_id={post_id} votes={post.post_votes} changeVotes={changeVotes} vote="down" />
             </div>
             <div className='dark:bg-[#272729] w-[100%] border-b-2 border-gray-200 space-y-2 flex flex-col p-2 bg-white rounded-r-md'>
                 <div className='text-sm flex space-x-5'>
-                    <h1>Posted by u/{name}</h1><h1>   {post_date}</h1>
+                    <h1>Posted by u/{name}</h1><h1>   {new Date(post.post_date).toLocaleDateString()}</h1>
                 </div>
                 <div className='text-xl'>
                     <h1>{post.post_title}</h1>
@@ -37,7 +37,7 @@ export default async function Page({params,searchParams}: {params: { post_id: st
                 <div>
                     <h1>{post.post_text}</h1>
                 </div>
-                <div> */}
+                <div>
             {
                 (comments) ?
                 comments.map(async(comment, index:number) => {
