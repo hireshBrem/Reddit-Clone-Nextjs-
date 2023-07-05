@@ -13,7 +13,7 @@ export default async function Page({params,searchParams}: {params: { post_id: st
     console.log(name + " " + post_id)
 
     let post = await getPostDetail(post_id)
-    // let comments = await getComments(post_id)
+    let comments = await getComments(post_id)
     // let post_date = new Date(post.post_date).toLocaleDateString()
 
     
@@ -39,22 +39,22 @@ export default async function Page({params,searchParams}: {params: { post_id: st
                 </div>
                 <div> */}
             {
-                // (comments) ?
-                // comments.map(async(comment, index:number) => {
-                //     let profile_photo = await getUserDetail(comment.user_id, "profile_photo")
-                //     let name = await getUserDetail(comment.user_id, "name")
+                (comments) ?
+                comments.map(async(comment, index:number) => {
+                    let profile_photo = await getUserDetail(comment.user_id, "profile_photo")
+                    let name = await getUserDetail(comment.user_id, "name")
 
-                //     let comment_date = new Date(comment.date).toLocaleDateString()
+                    let comment_date = new Date(comment.date).toLocaleDateString()
 
-                //     return(
-                //         <div key={index} className="border-t-2 my-5 border-grayy-300">
-                //             <Image className="inline-block rounded-md mt-2" src={profile_photo} alt="pic" width={30} height={30} />
-                //             <h1 className="inline-block ml-5">u/{name} {comment_date}</h1>
-                //             <h1>{comment.content}</h1>
-                //         </div>
-                //     )
-                // })
-                // :null
+                    return(
+                        <div key={index} className="border-t-2 my-5 border-grayy-300">
+                            <Image className="inline-block rounded-md mt-2" src={profile_photo} alt="pic" width={30} height={30} />
+                            <h1 className="inline-block ml-5">u/{name} {comment_date}</h1>
+                            <h1>{comment.content}</h1>
+                        </div>
+                    )
+                })
+                :null
             }                
                 <CommentBox post_id={post_id} />
             </div>
