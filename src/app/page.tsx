@@ -52,7 +52,7 @@ export default async function Home() {
                                     post_date: post_date,
                                     name: post_name,
                                 }}}
-                            target='_blank' className='w-[100%]'>
+                            className='w-[100%]'>
                             <div className='dark:bg-[#272729] w-[100%] space-y-2 flex flex-col p-2 bg-white rounded-r-md'>
                                 <div className='text-sm flex space-x-5'>
                                     <h1>Posted by u/{post_name}</h1><h1>   {post_date}</h1>

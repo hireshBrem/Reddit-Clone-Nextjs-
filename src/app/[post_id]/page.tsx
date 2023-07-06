@@ -28,7 +28,6 @@ export default async function Page({params,searchParams}: {params: { post_id: st
                 <VoteButton post_id={post_id} votes={post.post_votes} changeVotes={changeVotes} vote="up" />
                 <h1 className='mx-4'>{post.post_votes}</h1>
                 <VoteButton post_id={post_id} votes={post.post_votes} changeVotes={changeVotes} vote="down" />
-                <Button text="Share" any={post_id} any2={params} />
             </div>
             <div className='dark:bg-[#272729] w-[100%] border-b-2 border-gray-200 space-y-2 flex flex-col p-2 bg-white rounded-r-md'>
                 <div className='text-sm flex space-x-5'>
