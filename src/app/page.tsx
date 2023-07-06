@@ -11,10 +11,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PostWrapper from './components/PostWrapper' 
 import Sidebar from './components/Sidebar'
 import Link from 'next/link'
+import { PostgrestError } from '@supabase/supabase-js'
 
 export default async function Home() {
     const session = await getServerSession(authOptions) 
-    const posts = await getPosts()
+    const posts: any[] | PostgrestError | null = await getPosts()
     if(session) {
         await addUserToDB(session.user?.email, session.user?.name, session.user?.image) 
     }
@@ -31,7 +32,7 @@ export default async function Home() {
                 <a href="/submit" className='w-[100%] mx-2'><input className='m-1 rounded-md p-2 w-[100%] bg-[#F6F7F8] dark:bg-[#272729] border-[1px] dark:border-gray-600' placeholder='Create Post' /></a>
             </div>
             {
-                posts != null ?
+                (Array.isArray(posts)) ?
                 posts.reverse().map(async (post, index)=> {
 
                     let post_name = await getUserDetail(post.user_id, "name")
