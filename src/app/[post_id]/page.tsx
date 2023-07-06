@@ -6,6 +6,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import CommentBox from "../components/CommentBox";
 import Button from "../components/Button";
+import { PostgrestError } from "@supabase/supabase-js";
+import { PostgrestClient } from "@supabase/postgrest-js";
+import { error } from "console";
 
 export default async function Page({params,searchParams}: {params: { post_id: string, post_date:string }, searchParams: { [key: string]: string | null }}) {
     const session = await getServerSession(authOptions)
@@ -13,10 +16,9 @@ export default async function Page({params,searchParams}: {params: { post_id: st
     let post_id = searchParams.post_id
 
     let post = await getPostDetail(post_id)
-    let comments = await getComments(post_id)
+    let comments:any[] | null | PostgrestError = await getComments(post_id)
     // let post_date = new Date(post.post_date).toLocaleDateString()
 
-    
     return(
     session ?
 <div className='max-w-5xl m-auto flex flex-row justify-center pt-5'>
@@ -26,7 +28,6 @@ export default async function Page({params,searchParams}: {params: { post_id: st
                 <VoteButton post_id={post_id} votes={post.post_votes} changeVotes={changeVotes} vote="up" />
                 <h1 className='mx-4'>{post.post_votes}</h1>
                 <VoteButton post_id={post_id} votes={post.post_votes} changeVotes={changeVotes} vote="down" />
-                <Button p={searchParams.name} />
             </div>
             <div className='dark:bg-[#272729] w-[100%] border-b-2 border-gray-200 space-y-2 flex flex-col p-2 bg-white rounded-r-md'>
                 <div className='text-sm flex space-x-5'>
@@ -41,8 +42,8 @@ export default async function Page({params,searchParams}: {params: { post_id: st
             <div>
             <div>
             {
-                (comments) ?
-                comments.map(async(comment, index:number) => {
+                (Array.isArray(comments)) ?
+                comments.map(async(comment:any, index:number) => {
                     let profile_photo = await getUserDetail(comment.user_id, "profile_photo")
                     let name = await getUserDetail(comment.user_id, "name")
 
