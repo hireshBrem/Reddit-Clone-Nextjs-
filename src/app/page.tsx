@@ -46,7 +46,7 @@ export default async function Home() {
                                 <VoteButton post_id={post.post_id} votes={post.post_votes} changeVotes={changeVotes} vote="down" />
                             </div>
                             <Link href={{
-                                pathname: `/${post.post_title}`,
+                                pathname: `/${post.post_id}`,
                                 query: {
                                     post_id: post.post_id,
                                     post_date: post_date,
