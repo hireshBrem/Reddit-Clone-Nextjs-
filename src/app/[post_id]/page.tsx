@@ -8,6 +8,8 @@ import CommentBox from "../components/CommentBox";
 import Button from "../components/Button";
 import { PostgrestError } from "@supabase/supabase-js";
 
+export const dynamic='force-dynamic'
+
 export default async function Page({params,searchParams}: {params: { post_title: string }, searchParams: { [key: string]: string | null }}) {
     const session = await getServerSession(authOptions)
     let name = searchParams.name
