@@ -48,7 +48,7 @@ export default async function Home() {
                             <Link href={{
                                 pathname: `/${post.post_title}`,
                                 query: {
-                                    post_id: post.post_id,
+                                    post_id: post.post_id.toString(),
                                     post_date: post_date,
                                     name: post_name,
                                 }}}
