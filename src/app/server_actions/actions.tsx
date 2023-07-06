@@ -17,6 +17,7 @@ export async function checkUserInDB(_email:string | null | undefined) {
     .eq("email", _email)
 
     if(error) {
+        console.log(error)
         return(error)
     }
 
@@ -46,6 +47,7 @@ export async function addUserToDB(email:string | null | undefined, name: string 
             {email: email, name: name, profile_photo: photo },
         ])
         if(error) {
+            console.log(error)
             return(error)
         }
     }
@@ -63,6 +65,7 @@ export async function getPosts() {
     .select('*')
 
     if(error) {
+        console.log(error)
         return(error)
     }
     revalidatePath("/")
@@ -82,7 +85,8 @@ export async function getUserDetail(user_id:string | null, detail:string) {
     .eq("user_id", user_id)
 
     if(error){
-        return(error)
+        console.log(error)
+        return (error)
     }
     if(detail=="name" && users){
         let {name}:any = users[0]
@@ -114,6 +118,7 @@ export async function getPostDetail(post_id: string | null) {
     }
 
     if(error) {
+        console.log(error)
         return(error)
     }
 
@@ -159,6 +164,7 @@ export async function getComments(post_id:string| null) {
     .eq("post_id", post_id)
 
     if(error){
+        console.log(error)
         return(error)
     }
     revalidatePath("/")
@@ -184,7 +190,7 @@ export async function addComment(post_id:string| null, content:string| null, ema
     }
 
     if(error) {
-        return(error)
+        console.log(error)
     }
 
     let date = new Date()
@@ -222,6 +228,7 @@ export async function addPost(action:string, title:string, txt_img: string, emai
         .eq("email", email)
         
     if(error) {
+        console.log(error)
         return(error)
     }
     if(data) {

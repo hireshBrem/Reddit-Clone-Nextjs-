@@ -1,9 +1,9 @@
 'use client';
 
-export default function Button({p}: {p: string | null}) {
+export default function Button({text, any}: {text: string | null, any:any}) {
     return(
-        <button>
-            {p}
+        <button onClick={()=>console.log(any)}>
+            {text}
         </button>
     )
 }
