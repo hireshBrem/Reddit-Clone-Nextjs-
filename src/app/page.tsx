@@ -37,7 +37,7 @@ export default async function Home() {
 
                     let post_name = await getUserDetail(post.user_id, "name")
                     let post_date = new Date(post.post_date).toLocaleDateString()
-
+                    
                     return(
                         <div key={index} className='flex flex-row mt-3 w-full'>
                             <div className='dark:bg-[#272729] border-r-2 dark:border-black  flex flex-col align-middle w-10 bg-[#F6F7F8] rounded-l-md'>
@@ -48,7 +48,7 @@ export default async function Home() {
                             <Link href={{
                                 pathname: `/${post.post_title}`,
                                 query: {
-                                    post_id: post.post_id.toString(),
+                                    post_id: post.post_id,
                                     post_date: post_date,
                                     name: post_name,
                                 }}}
